@@ -1,2 +1,101 @@
 # SysmonEvents
-Sysmon Events
+## SYSMON EVENTS USING THIS GITHUB CONFIG
+https://github.com/olafhartong/sysmon-modular
+
+
+##### PROCESS CREATE
+Process Create:
+RuleName: technique_id=T1086,technique_name=PowerShell
+UtcTime: 2018-09-01 02:26:12.384
+ProcessGuid: {79579f2b-f8c4-5b89-0000-0010a8e24300}
+ProcessId: 5568
+Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+FileVersion: 10.0.14393.0 (rs1_release.160715-1616)
+Description: Windows PowerShell
+Product: Microsoft® Windows® Operating System
+Company: Microsoft Corporation
+CommandLine: powershell.exe  -nop -w hidden -encodedcommand JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdAAgAEkAT
+CurrentDirectory: C:\Windows\system32\
+User: computer\user
+LogonGuid: {79579f2b-f60c-5b89-0000-0020415e0600}
+LogonId: 0x65E41
+TerminalSessionId: 1
+IntegrityLevel: High
+Hashes: SHA1=044A0CF1F6BC478A7172BF207EEF1E201A18BA02,MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453
+ParentProcessGuid: {79579f2b-f737-5b89-0000-0010a2d22200}
+ParentProcessId: 2764
+ParentImage: C:\Windows\System32\cmd.exe
+ParentCommandLine: "C:\Windows\system32\cmd.exe" 
+
+##### NETWORK CALLBACK
+This config does not catch network connections when injected into other processes.
+Network connection detected:
+RuleName: technique_id=T1218,technique_name=Signed Binary Proxy Execution
+UtcTime: 2018-09-01 02:26:19.331
+ProcessGuid: {79579f2b-f8c7-5b89-0000-0010f4864400}
+ProcessId: 5552
+Image: C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe
+User: computer\user
+Protocol: tcp
+Initiated: true
+SourceIsIpv6: false
+SourceIp: 192.168.1.130
+SourceHostname: computer
+SourcePort: 1907
+SourcePortName: 
+DestinationIsIpv6: false
+DestinationIp: 192.168.1.143
+DestinationHostname: 
+DestinationPort: 443
+DestinationPortName: https
+
+
+
+
+
+##### CREDENTIAL DUMPING
+##### This is mimikatz grabbing credentials from current logged on users
+Process accessed:
+RuleName: technique_id=T1003,technique_name=Credential Dumping
+UtcTime: 2018-09-01 02:40:12.833
+SourceProcessGUID: {79579f2b-fc0c-5b89-0000-001097eb6f00}
+SourceProcessId: 5212
+SourceThreadId: 6996
+SourceImage: C:\Windows\System32\rundll32.exe
+TargetProcessGUID: {79579f2b-f5fa-5b89-0000-00105a9c0000}
+TargetProcessId: 604
+TargetImage: C:\Windows\system32\lsass.exe
+GrantedAccess: 0x1010
+CallTrace: C:\Windows\SYSTEM32\ntdll.dll+a6574|C:\Windows\System32\KERNELBASE.dll+20edd|UNKNOWN(000001C7A2AA710D)
+
+##### This is mimikatz grabbing hashes from the local accounts
+Process accessed:
+RuleName: technique_id=T1003,technique_name=Credential Dumping
+UtcTime: 2018-09-01 02:45:26.030
+SourceProcessGUID: {79579f2b-fd45-5b89-0000-0010c5657300}
+SourceProcessId: 6420
+SourceThreadId: 4172
+SourceImage: C:\Windows\System32\rundll32.exe
+TargetProcessGUID: {79579f2b-f5fa-5b89-0000-00105a9c0000}
+TargetProcessId: 604
+TargetImage: C:\Windows\system32\lsass.exe
+GrantedAccess: 0x1FFFFF
+CallTrace: C:\Windows\SYSTEM32\ntdll.dll+a6574|C:\Windows\System32\KERNELBASE.dll+20edd|UNKNOWN(0000022B28BB1D25)
+
+##### PROCESS INJECTION
+This config does not catch this easily.  This is the closest I could find.  When I inject into this process is creates a bunch of registry events for certificates.
+Registry object added or deleted:
+RuleName: technique_id=T1130,technique_name=Install Root Certificate
+EventType: CreateKey
+UtcTime: 2018-09-01 03:04:06.739
+ProcessGuid: {79579f2b-f5fe-5b89-0000-0010583a0200}
+ProcessId: 2184
+Image: C:\Program Files\Palo Alto Networks\GlobalProtect\PanGPS.exe
+TargetObject: HKU\.DEFAULT\Software\Microsoft\SystemCertificates\Root\Certificates
+
+
+
+
+
+
+
