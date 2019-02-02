@@ -83,7 +83,7 @@ GrantedAccess: 0x1FFFFF
 CallTrace: C:\Windows\SYSTEM32\ntdll.dll+a6574|C:\Windows\System32\KERNELBASE.dll+20edd|UNKNOWN(0000022B28BB1D25)
 
 ##### PROCESS INJECTION
-This config does not catch this easily.  This is the closest I could find.  When I inject into this process is creates a bunch of registry events for certificates.
+This config does not catch this easily.  This is the closest I could find.  When I inject into this process it creates a bunch of registry events for certificates.
 Registry object added or deleted:
 RuleName: technique_id=T1130,technique_name=Install Root Certificate
 EventType: CreateKey
