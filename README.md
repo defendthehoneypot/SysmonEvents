@@ -1,6 +1,6 @@
 # SysmonEvents
 ## SYSMON EVENTS USING THIS GITHUB CONFIG
-https://github.com/olafhartong/sysmon-modular
+https://github.com/ion-storm/sysmon-config
 
 ##### Lateral movement using psexec technique from MSF
 Registry value set:
