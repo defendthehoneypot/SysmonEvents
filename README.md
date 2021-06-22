@@ -140,6 +140,36 @@ Image: C:\Program Files\Palo Alto Networks\GlobalProtect\PanGPS.exe
 TargetObject: HKU\.DEFAULT\Software\Microsoft\SystemCertificates\Root\Certificates
 
 
+### SOQueries Hunt
+##### Filter for all sysmon events
+* AND event.module:"sysmon" | groupby event.module event.dataset
+
+##### Filter for service creations events
+
+
+
+##### Captures process injection
+* AND event.module: "sysmon" AND event.dataset:"create_remote_thread" | groupby event.module event.dataset
+
+##### Filter for network events
+* AND event.module: "sysmon" AND event.dataset: "network_connection" | groupby event.module event.dataset
+Manually exclude known good events
+
+##### Filtering for specifc systems
+* AND event.module: "sysmon" AND agent.ip:"x.x.x.x" | groupby event.module event.dataset
+
+
+### SOQueries Kibana Discovery
+##### Credential dumps
+event.module: "sysmon" AND event.dataset:"create_remote_thread" AND message:"*lsass.exe"
+event.module: "sysmon" AND event.dataset:"create_remote_thread" AND winlog.event_data.targetImage:"*lsass.exe"
+
+##### Lateral movement
+event.module: "sysmon" AND event.dataset:"registry_value_set" AND winlog.event_data.targetObject:"*Start"
+
+##### Process injection
+event.module: "sysmon" AND event.dataset:"create_remote_thread" (add following fields: winlog.event_data.sourceImage and winlog.event_data.targetImage) and look for sourceimages like powershell|rundll
+
 
 
 
