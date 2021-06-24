@@ -162,10 +162,12 @@ Manually exclude known good events
 ### SOQueries Kibana Discovery
 ##### Credential dumps
 event.module: "sysmon" AND event.dataset:"create_remote_thread" AND message:"*lsass.exe"
+
 event.module: "sysmon" AND event.dataset:"create_remote_thread" AND winlog.event_data.targetImage:"*lsass.exe"
 
 ##### Lateral movement
 event.module: "sysmon" AND event.dataset:"registry_value_set" AND winlog.event_data.targetObject:"*Start"
+
 event.module: "sysmon" AND process.parent.executable:"WmiPrvSE.exe"
 
 
