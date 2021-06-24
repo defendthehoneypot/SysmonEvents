@@ -71,7 +71,33 @@ Hashes: SHA1=044A0CF1F6BC478A7172BF207EEF1E201A18BA02,MD5=097CE5761C89434367598B
 ParentProcessGuid: {79579f2b-f737-5b89-0000-0010a2d22200}
 ParentProcessId: 2764
 ParentImage: C:\Windows\System32\cmd.exe
-ParentCommandLine: "C:\Windows\system32\cmd.exe" 
+ParentCommandLine: "C:\Windows\system32\cmd.exe"
+
+##### PROCESS CREATE LATERAL MOVEMENT USING WMI
+Process Create:
+RuleName: -
+UtcTime: 2021-06-24 02:44:23.786
+ProcessGuid: {f3da3d38-f187-60d3-b099-6a1600000000}
+ProcessId: 7072
+Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+FileVersion: 10.0.14393.206 (rs1_release.160915-0644)
+Description: Windows PowerShell
+Product: Microsoft® Windows® Operating System
+Company: Microsoft Corporation
+OriginalFileName: PowerShell.EXE
+CommandLine: powershell.exe -nop -w hidden -enc SQBFAFgAIAAoACgAbgBlAHcALQBvA==
+CurrentDirectory: C:\WINDOWS\system32\
+User: computer\user
+LogonGuid: {f3da3d38-f187-60d3-e798-6a1600000000}
+LogonId: 0x166A98E7
+TerminalSessionId: 0
+IntegrityLevel: High
+Hashes: MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453
+ParentProcessGuid: {f3da3d38-d166-60cb-4b31-020000000000}
+ParentProcessId: 2868
+ParentImage: C:\Windows\System32\wbem\WmiPrvSE.exe
+ParentCommandLine: C:\WINDOWS\system32\wbem\wmiprvse.exe -secured -Embedding
+
 
 ##### NETWORK CALLBACK
 This config does not catch network connections when injected into other processes.
@@ -94,10 +120,6 @@ DestinationIp: 192.168.1.143
 DestinationHostname: 
 DestinationPort: 443
 DestinationPortName: https
-
-
-
-
 
 ##### CREDENTIAL DUMPING
 ##### This is mimikatz grabbing credentials from current logged on users
