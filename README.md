@@ -151,7 +151,6 @@ GrantedAccess: 0x1FFFFF
 CallTrace: C:\Windows\SYSTEM32\ntdll.dll+a6574|C:\Windows\System32\KERNELBASE.dll+20edd|UNKNOWN(0000022B28BB1D25)
 
 ##### PROCESS INJECTION
-This config does not catch this easily.  This is the closest I could find.  When I inject into this process it creates a bunch of registry events for certificates.
 Registry object added or deleted:
 CreateRemoteThread detected:
 RuleName: -
@@ -189,6 +188,7 @@ Manually exclude known good events
 
 ### SOQueries Kibana Discovery
 ##### Credential dumps
+Note: You are looking for processes that do not normally touch lsass.exe
 event.module: "sysmon" AND event.dataset:"create_remote_thread" AND message:"*lsass.exe"
 
 event.module: "sysmon" AND event.dataset:"create_remote_thread" AND winlog.event_data.targetImage:"*lsass.exe"
@@ -200,7 +200,9 @@ event.module: "sysmon" AND process.parent.executable:"WmiPrvSE.exe"
 
 
 ##### Process injection
-event.module: "sysmon" AND event.dataset:"create_remote_thread" (add following fields: winlog.event_data.sourceImage and winlog.event_data.targetImage) and look for sourceimages like powershell|rundll32
+Note: add following fields on the left: winlog.event_data.sourceImage and winlog.event_data.targetImage and look for sourceimages like powershell|rundll32
+
+event.module: "sysmon" AND event.dataset:"create_remote_thread"
 
 (event.module:"sysmon" AND event.dataset:"create_remote_thread" AND winlog.event_data.sourceImage:"powershell.exe") OR (event.module:"sysmon" AND event.dataset:"create_remote_thread" AND winlog.event_data.sourceImage:"rundll32.exe" )
 
