@@ -202,6 +202,8 @@ event.module: "sysmon" AND process.parent.executable:"WmiPrvSE.exe"
 ##### Process injection
 event.module: "sysmon" AND event.dataset:"create_remote_thread" (add following fields: winlog.event_data.sourceImage and winlog.event_data.targetImage) and look for sourceimages like powershell|rundll32
 
+(event.module:"sysmon" AND event.dataset:"create_remote_thread" AND winlog.event_data.sourceImage:"powershell.exe") OR (event.module:"sysmon" AND event.dataset:"create_remote_thread" AND winlog.event_data.sourceImage:"rundll32.exe" )
+
 
 
 
