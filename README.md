@@ -153,13 +153,19 @@ CallTrace: C:\Windows\SYSTEM32\ntdll.dll+a6574|C:\Windows\System32\KERNELBASE.dl
 ##### PROCESS INJECTION
 This config does not catch this easily.  This is the closest I could find.  When I inject into this process it creates a bunch of registry events for certificates.
 Registry object added or deleted:
-RuleName: technique_id=T1130,technique_name=Install Root Certificate
-EventType: CreateKey
-UtcTime: 2018-09-01 03:04:06.739
-ProcessGuid: {79579f2b-f5fe-5b89-0000-0010583a0200}
-ProcessId: 2184
-Image: C:\Program Files\Palo Alto Networks\GlobalProtect\PanGPS.exe
-TargetObject: HKU\.DEFAULT\Software\Microsoft\SystemCertificates\Root\Certificates
+CreateRemoteThread detected:
+RuleName: -
+UtcTime: 2021-06-24 03:10:58.927
+SourceProcessGuid: {f3da3d38-f187-60d3-b099-6a1600000000}
+SourceProcessId: 7072
+SourceImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+TargetProcessGuid: {f3da3d38-d163-60cb-f2d1-010000000000}
+TargetProcessId: 1316
+TargetImage: C:\Program Files\VMware\VMware Tools\vmtoolsd.exe
+NewThreadId: 4032
+StartAddress: 0x000001A4BC400000
+StartModule: -
+StartFunction: -
 
 
 ### SOQueries Hunt
