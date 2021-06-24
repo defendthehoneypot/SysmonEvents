@@ -176,7 +176,7 @@ StartFunction: -
 
 
 
-##### Captures process injection
+##### Filter for all process injection type events
 * AND event.module: "sysmon" AND event.dataset:"create_remote_thread" | groupby event.module event.dataset
 
 ##### Filter for network events
