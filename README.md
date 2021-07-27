@@ -216,6 +216,9 @@ dce_rpc.operation.keyword: OpenSCManagerA
 ##### Lateral movement using NTLM (pass-the-hash)
 event.dataset.keyword: ntlm
 
+##### CobaltStrike C2 communication (not sure how accurate this is, but it returned only C2 communication)
+server.packets: 9
+
 
 
 
