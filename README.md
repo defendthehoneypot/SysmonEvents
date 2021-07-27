@@ -207,7 +207,7 @@ event.module: "sysmon" AND event.dataset:"create_remote_thread"
 (event.module:"sysmon" AND event.dataset:"create_remote_thread" AND winlog.event_data.sourceImage:"powershell.exe") OR (event.module:"sysmon" AND event.dataset:"create_remote_thread" AND winlog.event_data.sourceImage:"rundll32.exe" )
 
 ##### Network SMB executable file transfer
-rule.name: ET POLICY SMB Executable File Transfer
+rule.name: "ET POLICY SMB Executable File Transfer"
 
 ##### Remote Service Control Request
 rule.name: "ET RPC DCERPC SVCCTL - Remote Service Control Manager Access"
