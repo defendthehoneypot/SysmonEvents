@@ -206,6 +206,9 @@ event.module: "sysmon" AND event.dataset:"create_remote_thread"
 
 (event.module:"sysmon" AND event.dataset:"create_remote_thread" AND winlog.event_data.sourceImage:"powershell.exe") OR (event.module:"sysmon" AND event.dataset:"create_remote_thread" AND winlog.event_data.sourceImage:"rundll32.exe" )
 
+##### Network SMB events
+rule.name: ET POLICY SMB Executable File Transfer
+
 
 
 
