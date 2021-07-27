@@ -211,6 +211,10 @@ rule.name: "ET POLICY SMB Executable File Transfer"
 
 ##### Remote Service Control Request
 rule.name: "ET RPC DCERPC SVCCTL - Remote Service Control Manager Access"
+dce_rpc.operation.keyword: OpenSCManagerA
+
+##### Lateral movement using NTLM (pass-the-hash)
+event.dataset.keyword: ntlm
 
 
 
