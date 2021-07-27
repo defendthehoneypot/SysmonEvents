@@ -217,7 +217,7 @@ dce_rpc.operation.keyword: OpenSCManagerA
 event.dataset.keyword: ntlm
 
 ##### CobaltStrike C2 communication (not sure how accurate this is, but it returned only C2 communication)
-server.packets: 9
+server.packets >8 AND server.packets <12
 
 
 
