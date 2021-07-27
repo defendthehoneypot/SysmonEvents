@@ -222,6 +222,8 @@ rule.name: "ET POLICY WinRM wsman Access - Possible Lateral Movement"
 
 rule.metadata.tag.keyword: WinRM
 
+rule.name.keyword: "ET USER_AGENTS WinRM User Agent Detected - Possible Lateral Movement"
+
 ##### CobaltStrike C2 communication (not sure how accurate this is, but it returned only C2 communication)
 server.packets >8 AND server.packets <12
 
