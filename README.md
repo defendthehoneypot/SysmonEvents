@@ -230,6 +230,8 @@ server.packets >8 AND server.packets <12
 ##### Finding executable files
 file.mime_type.keyword: application/x-dosexec
 
+##### DNS Queries
+dns.query.name.keyword:* AND dns.query.type_name.keyword: A (This will find all DNS A records, not very usefull but a syntax example)
 
 
 
